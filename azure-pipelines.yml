@@ -32,8 +32,8 @@ steps:
     SonarCloud: 'webapps-1'
     organization: 'dev-project-01'
     scannerMode: 'MSBuild'
-    projectKey: 'deov'
-    projectName: 'deov'
+    projectKey: 'dev-project-01'
+    projectName: 'dev-project-01'
 - task: SonarCloudAnalyze@2
   inputs:
     jdkversion: 'JAVA_HOME_17_X64'
