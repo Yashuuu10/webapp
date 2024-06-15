@@ -27,3 +27,16 @@ steps:
     msbuildArgs: '/p:DeployOnBuild=true /p:WebPublishMethod=Package /p:PackageAsSingleFile=true /p:SkipInvalidConfigurations=true /p:DesktopBuildPackageLocation="$(build.artifactStagingDirectory)\WebApp.zip" /p:DeployIisAppPath="Default Web Site"'
     platform: '$(buildPlatform)'
     configuration: '$(buildConfiguration)'
+- task: SonarCloudPrepare@2
+  inputs:
+    SonarCloud: 'webapps-1'
+    organization: 'dev-project-01'
+    scannerMode: 'MSBuild'
+    projectKey: 'deov'
+    projectName: 'deov'
+- task: SonarCloudAnalyze@2
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+- task: SonarCloudPublish@2
+  inputs:
+    pollingTimeoutSec: '300'
